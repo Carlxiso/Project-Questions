@@ -5,11 +5,20 @@ main() {
 }
 
 class QuestionApp extends StatelessWidget {
+  //Método Decorator
   @override
   // Method build
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Text('Hey There. How have you been?'),
+      // -- COMPONENTS TREE -- //
+      //Component Scaffold
+      home: Scaffold(
+        //Component AppBar
+        appBar: AppBar(
+          title: Text('Questionary'),
+        ),
+        body: Text('Hi there!'),
+      ),
     );
   }
 }
