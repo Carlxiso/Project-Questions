@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 main() {
   runApp(QuestionApp());
 }
 
 class QuestionApp extends StatelessWidget {
+  final List<String> questionsList = [
+    'What is your favourite color?',
+    'What is your favourite pet?'
+  ];
+
   //Método Decorator
   @override
   // Method build
@@ -17,7 +23,14 @@ class QuestionApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Questionary'),
         ),
-        body: Text('Hi there!'),
+        body: Column(
+          children: [
+            Text(questionsList[0]),
+            ElevatedButton(onPressed: null, child: Text('Answer One')),
+            ElevatedButton(onPressed: null, child: Text('Answer Two')),
+            ElevatedButton(onPressed: null, child: Text('Answer Three')),
+          ],
+        ),
       ),
     );
   }
