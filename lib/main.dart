@@ -1,20 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+// import 'package:flutter/widgets.dart';
 
 main() {
   runApp(QuestionApp());
 }
 
-class QuestionApp extends StatelessWidget {
-  final List<String> questionsList = [
-    'What is your favourite color?',
-    'What is your favourite pet?'
-  ];
+// O componente statfull que nnos queresmos controlar o seu estado
+class QuestionAppState extends State<QuestionApp> {
+  /* 
+  var questionSelected = 0; - desta forma vai gerar problerma porque 
+  os encontramos numa class sem estado Stateless 
+  */
+  var questionSelected = 0;
+
+  // Method Answer
+  void answer() {
+    setState(() {
+      questionSelected++;
+    });
+    print(questionSelected);
+  }
 
   //Método Decorator
   @override
   // Method build
   Widget build(BuildContext context) {
+    final List<String> questionsList = [
+      'What is your favourite color?',
+      'What is your favourite pet?'
+    ];
     return MaterialApp(
       // -- COMPONENTS TREE -- //
       //Component Scaffold
@@ -25,13 +39,22 @@ class QuestionApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text(questionsList[0]),
-            ElevatedButton(onPressed: null, child: Text('Answer One')),
-            ElevatedButton(onPressed: null, child: Text('Answer Two')),
-            ElevatedButton(onPressed: null, child: Text('Answer Three')),
+            Text(questionsList[questionSelected]),
+            ElevatedButton(onPressed: answer, child: Text('Answer One')),
+            ElevatedButton(onPressed: answer, child: Text('Answer Two')),
+            ElevatedButton(onPressed: answer, child: Text('Answer Three')),
           ],
         ),
       ),
     );
+  }
+}
+
+//Componente stateful
+class QuestionApp extends StatefulWidget {
+  //Metodo que vai criar o estado do compoente Stateful
+  QuestionAppState createState() {
+    // TODO: implement createState
+    return QuestionAppState();
   }
 }
