@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_questions/question.dart';
-// import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart';
+import './question.dart';
+import './answer.dart';
 
 main() {
   runApp(QuestionApp());
@@ -41,9 +43,12 @@ class _QuestionAppState extends State<QuestionApp> {
         body: Column(
           children: [
             Question(questionsList[_questionSelected]),
-            ElevatedButton(onPressed: _answer, child: Text('Answer One')),
-            ElevatedButton(onPressed: _answer, child: Text('Answer Two')),
-            ElevatedButton(onPressed: _answer, child: Text('Answer Three')),
+            Answer('Answer One', _answer),
+            Answer('Answer Two', _answer),
+            Answer('Answer Three', _answer),
+            // ElevatedButton(onPressed: _answer, child: Text('Answer One')),
+            // ElevatedButton(onPressed: _answer, child: Text('Answer Two')),
+            // ElevatedButton(onPressed: _answer, child: Text('Answer Three')),
           ],
         ),
       ),
