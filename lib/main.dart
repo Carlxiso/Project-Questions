@@ -97,7 +97,15 @@ class _QuestionAppState extends State<QuestionApp> {
                   // ElevatedButton(onPressed: _answer, child: Text('Answer Three')),
                 ],
               )
-            : null,
+            //Showing the result
+            : Center(
+                child: Text(
+                  'congratulations',
+                  style: TextStyle(
+                    fontSize: 28,
+                  ),
+                ),
+              ),
       ),
     );
   }
