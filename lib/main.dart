@@ -3,6 +3,7 @@ import 'package:project_questions/question.dart';
 import 'package:flutter/widgets.dart';
 import './question.dart';
 import './answer.dart';
+import './message.dart';
 
 main() {
   runApp(QuestionApp());
@@ -98,14 +99,7 @@ class _QuestionAppState extends State<QuestionApp> {
                 ],
               )
             //Showing the result
-            : Center(
-                child: Text(
-                  'congratulations',
-                  style: TextStyle(
-                    fontSize: 28,
-                  ),
-                ),
-              ),
+            : Message(''),
       ),
     );
   }
