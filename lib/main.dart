@@ -16,48 +16,58 @@ class _QuestionAppState extends State<QuestionApp> {
   */
   var _questionSelected = 0;
 
+  final List<Map<String, Object>> _questionsList = const [
+    {
+      'text': 'What is your favourite color?',
+      'answers': [
+        'Blue',
+        'Brown',
+        'Yellow',
+        'Red',
+      ]
+    },
+    {
+      'text': 'What is your favourite pet?',
+      'answers': [
+        'Dog',
+        'Cat',
+        'Elephant',
+        'Lion',
+      ]
+    },
+    {
+      'text': 'What is your favourite Football Team?',
+      'answers': [
+        'Bayern',
+        'Barcelona',
+        'At. Madrid',
+        'Benfica',
+      ]
+    }
+  ];
+
   // Method Answer
   void _answer() {
-    setState(() {
-      _questionSelected++;
-    });
+    if (isSelectedQuestion) {
+      setState(() {
+        _questionSelected++;
+      });
+    }
     print(_questionSelected);
+  }
+
+  // Getter
+  bool get isSelectedQuestion {
+    return _questionSelected < _questionsList.length;
   }
 
   //Método Decorator
   @override
   // Method build
   Widget build(BuildContext context) {
-    final List<Map<String, Object>> questionsList = [
-      {
-        'text': 'What is your favourite color?',
-        'answers': [
-          'Blue',
-          'Brown',
-          'Yellow',
-          'Red',
-        ]
-      },
-      {
-        'text': 'What is your favourite pet?',
-        'answers': [
-          'Dog',
-          'Cat',
-          'Elephant',
-          'Lion',
-        ]
-      },
-      {
-        'text': 'What is your favourite Football Team?',
-        'answers': [
-          'Bayern',
-          'Barcelona',
-          'At. Madrid',
-          'Benfica',
-        ]
-      }
-    ];
-    List<String> x = questionsList[_questionSelected].cast()['answers'];
+    List<String> x = isSelectedQuestion
+        ? _questionsList[_questionSelected].cast()['answers']
+        : [];
     // Código mais imperativo
     // for (String textAnswers in x) {
     //   answers.add(Answer(textAnswers, _answer));
@@ -71,20 +81,23 @@ class _QuestionAppState extends State<QuestionApp> {
         appBar: AppBar(
           title: Text('Questionary'),
         ),
-        body: Column(
-          children: [
-            Question(questionsList[_questionSelected]['text'].toString()),
-            //Abordagem mais declarativa
-            // O método map89 converte listas de Strings me Listas de widgets
-            ...x.map((t) => Answer(t, _answer)).toList(),
-            // Answer('Answer One', _answer),
-            // Answer('Answer Two', _answer),
-            // Answer('Answer Three', _answer),
-            // ElevatedButton(onPressed: _answer, child: Text('Answer One')),
-            // ElevatedButton(onPressed: _answer, child: Text('Answer Two')),
-            // ElevatedButton(onPressed: _answer, child: Text('Answer Three')),
-          ],
-        ),
+        body: isSelectedQuestion
+            ? Column(
+                children: [
+                  Question(
+                      _questionsList[_questionSelected]['text'].toString()),
+                  //Abordagem mais declarativa
+                  // O método map89 converte listas de Strings me Listas de widgets
+                  ...x.map((t) => Answer(t, _answer)).toList(),
+                  // Answer('Answer One', _answer),
+                  // Answer('Answer Two', _answer),
+                  // Answer('Answer Three', _answer),
+                  // ElevatedButton(onPressed: _answer, child: Text('Answer One')),
+                  // ElevatedButton(onPressed: _answer, child: Text('Answer Two')),
+                  // ElevatedButton(onPressed: _answer, child: Text('Answer Three')),
+                ],
+              )
+            : null,
       ),
     );
   }
