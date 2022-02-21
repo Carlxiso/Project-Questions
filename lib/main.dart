@@ -57,12 +57,11 @@ class _QuestionAppState extends State<QuestionApp> {
         ]
       }
     ];
+    List<String> x = questionsList[_questionSelected].cast()['answers'];
     // Código mais imperativo
-    List<Widget> answers = [];
-    for (String textAnswers
-        in questionsList[_questionSelected].cast()['answers']) {
-      answers.add(Answer(textAnswers, _answer));
-    }
+    // for (String textAnswers in x) {
+    //   answers.add(Answer(textAnswers, _answer));
+    // }
 
     return MaterialApp(
       // -- COMPONENTS TREE -- //
@@ -75,7 +74,9 @@ class _QuestionAppState extends State<QuestionApp> {
         body: Column(
           children: [
             Question(questionsList[_questionSelected]['text'].toString()),
-            ...answers,
+            //Abordagem mais declarativa
+            // O método map89 converte listas de Strings me Listas de widgets
+            ...x.map((t) => Answer(t, _answer)).toList(),
             // Answer('Answer One', _answer),
             // Answer('Answer Two', _answer),
             // Answer('Answer Three', _answer),
