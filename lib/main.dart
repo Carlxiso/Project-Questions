@@ -20,28 +20,28 @@ class _QuestionAppState extends State<QuestionApp> {
     {
       'text': 'What is your favourite color?',
       'answers': [
-        'Blue',
-        'Brown',
-        'Yellow',
-        'Red',
+        {'text': 'Blue', 'score': 10},
+        {'text': 'Brown', 'score': 10},
+        {'text': 'Yellow', 'score': 10},
+        {'text': 'Red', 'score': 10},
       ]
     },
     {
       'text': 'What is your favourite pet?',
       'answers': [
-        'Dog',
-        'Cat',
-        'Elephant',
-        'Lion',
+        {'text': 'Dog', 'score': 10},
+        {'text': 'Cat', 'score': 10},
+        {'text': 'Elephant', 'score': 10},
+        {'text': 'Lion', 'score': 10},
       ]
     },
     {
       'text': 'What is your favourite Football Team?',
       'answers': [
-        'Bayern',
-        'Barcelona',
-        'At. Madrid',
-        'Benfica',
+        {'text': 'Bayern', 'score': 10},
+        {'text': 'Barcelona', 'score': 10},
+        {'text': 'At. Madrid', 'score': 10},
+        {'text': 'Benfica', 'score': 10},
       ]
     }
   ];
