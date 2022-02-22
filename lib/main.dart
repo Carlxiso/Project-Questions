@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_questions/question.dart';
-import 'package:flutter/widgets.dart';
-import './question.dart';
-import './answer.dart';
+// import 'package:project_questions/question.dart';
+// import 'package:flutter/widgets.dart';
+import './questionary.dart';
 import './message.dart';
 
 main() {
@@ -57,7 +56,7 @@ class _QuestionAppState extends State<QuestionApp> {
     print(_questionSelected);
   }
 
-  // Getter
+// Getter
   bool get isSelectedQuestion {
     return _questionSelected < _questionsList.length;
   }
@@ -66,9 +65,6 @@ class _QuestionAppState extends State<QuestionApp> {
   @override
   // Method build
   Widget build(BuildContext context) {
-    List<String> x = isSelectedQuestion
-        ? _questionsList[_questionSelected].cast()['answers']
-        : [];
     // Código mais imperativo
     // for (String textAnswers in x) {
     //   answers.add(Answer(textAnswers, _answer));
@@ -83,20 +79,10 @@ class _QuestionAppState extends State<QuestionApp> {
           title: Text('Questionary'),
         ),
         body: isSelectedQuestion
-            ? Column(
-                children: [
-                  Question(
-                      _questionsList[_questionSelected]['text'].toString()),
-                  //Abordagem mais declarativa
-                  // O método map89 converte listas de Strings me Listas de widgets
-                  ...x.map((t) => Answer(t, _answer)).toList(),
-                  // Answer('Answer One', _answer),
-                  // Answer('Answer Two', _answer),
-                  // Answer('Answer Three', _answer),
-                  // ElevatedButton(onPressed: _answer, child: Text('Answer One')),
-                  // ElevatedButton(onPressed: _answer, child: Text('Answer Two')),
-                  // ElevatedButton(onPressed: _answer, child: Text('Answer Three')),
-                ],
+            ? Questionary(
+                questionsList: _questionsList,
+                questionSelected: _questionSelected,
+                answer: _answer,
               )
             //Showing the result
             : Message(''),
