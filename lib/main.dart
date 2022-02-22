@@ -59,6 +59,13 @@ class _QuestionAppState extends State<QuestionApp> {
     print(_totalScore);
   }
 
+  void _restartQuestionary() {
+    setState(() {
+      _questionSelected = 0;
+      _totalScore = 0;
+    });
+  }
+
 // Getter
   bool get isSelectedQuestion {
     return _questionSelected < _questionsList.length;
@@ -88,7 +95,7 @@ class _QuestionAppState extends State<QuestionApp> {
                 answer: _answer,
               )
             //Showing the result
-            : Message('', _totalScore),
+            : Message('', _totalScore, _restartQuestionary),
       ),
     );
   }
