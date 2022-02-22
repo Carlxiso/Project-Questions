@@ -7,7 +7,7 @@ class Questionary extends StatelessWidget {
   final List<Map<String, Object>> questionsList;
   final int questionSelected;
 //Método Answer
-  final void Function() answer;
+  final void Function(int) answer;
 
 //Como é final nos precisamos de inicializar com um construtor
   Questionary({
@@ -30,7 +30,12 @@ class Questionary extends StatelessWidget {
     return Column(
       children: <Widget>[
         Question(questionsList[questionSelected]['text'].toString()),
-        ...x.map((resp) => Answer(resp['text'].toString(), answer)).toList(),
+        ...x.map((resp) {
+          return Answer(
+            resp['text'].toString(),
+            () => answer(int.parse(resp['score'].toString())),
+          );
+        }).toList(),
       ],
     );
   }

@@ -15,6 +15,7 @@ class _QuestionAppState extends State<QuestionApp> {
   os encontramos numa class sem estado Stateless 
   */
   var _questionSelected = 0;
+  var _totalScore = 0;
 
   final List<Map<String, Object>> _questionsList = const [
     {
@@ -47,13 +48,15 @@ class _QuestionAppState extends State<QuestionApp> {
   ];
 
   // Method Answer
-  void _answer() {
+  void _answer(int answer) {
     if (isSelectedQuestion) {
       setState(() {
         _questionSelected++;
+        _totalScore += answer;
       });
     }
     print(_questionSelected);
+    print(_totalScore);
   }
 
 // Getter
