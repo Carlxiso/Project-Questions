@@ -88,7 +88,7 @@ class _QuestionAppState extends State<QuestionApp> {
                 answer: _answer,
               )
             //Showing the result
-            : Message(''),
+            : Message('', _totalScore),
       ),
     );
   }
