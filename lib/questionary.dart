@@ -3,15 +3,16 @@ import './question.dart';
 import './answer.dart';
 
 class Questionary extends StatelessWidget {
-// Lista de Atributos
+//List of Attributes
   final List<Map<String, Object>> questionsList;
   final int questionSelected;
-//Método Answer
+
+//Method Answer
   final void Function(int) answer;
 
-//Como é final nos precisamos de inicializar com um construtor
+//As it is final we need to initialize with a constructor
   Questionary({
-    //requiered comunica que estes parametros sao obrigatórios
+    //requiered reports that these parameters are mandatory
     required this.questionsList,
     required this.questionSelected,
     required this.answer,
@@ -26,7 +27,6 @@ class Questionary extends StatelessWidget {
     List<Map<String, Object>> x = isSelectedQuestion
         ? questionsList[questionSelected].cast()['answers']
         : [];
-
     return Column(
       children: <Widget>[
         Question(questionsList[questionSelected]['text'].toString()),
