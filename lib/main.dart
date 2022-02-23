@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:project_questions/question.dart';
-// import 'package:flutter/widgets.dart';
 import './questionary.dart';
 import './message.dart';
 
@@ -8,12 +6,8 @@ main() {
   runApp(QuestionApp());
 }
 
-// O componente statfull que nos queresmos controlar o seu estado
+//The statfull component that we want to control its state
 class _QuestionAppState extends State<QuestionApp> {
-  /* 
-  var _questionSelected = 0; - desta forma vai gerar problerma porque 
-  os encontramos numa class sem estado Stateless 
-  */
   var _questionSelected = 0;
   var _totalScore = 0;
 
@@ -71,15 +65,10 @@ class _QuestionAppState extends State<QuestionApp> {
     return _questionSelected < _questionsList.length;
   }
 
-  //Método Decorator
+  //Method Decorator
   @override
-  // Method build
+  // Method Build
   Widget build(BuildContext context) {
-    // Código mais imperativo
-    // for (String textAnswers in x) {
-    //   answers.add(Answer(textAnswers, _answer));
-    // }
-
     return MaterialApp(
       // -- COMPONENTS TREE -- //
       //Component Scaffold
@@ -101,9 +90,9 @@ class _QuestionAppState extends State<QuestionApp> {
   }
 }
 
-//Componente stateful
+//Component stateful
 class QuestionApp extends StatefulWidget {
-  //Metodo que vai criar o estado do compoente Stateful
+  //Method that will create the state of the Stateful compoent
   _QuestionAppState createState() {
     // TODO: implement createState
     return _QuestionAppState();

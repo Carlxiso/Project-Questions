@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Message extends StatelessWidget {
-  // const Message({ Key? key }) : super(key: key);
-
   final String text;
   final int score;
   final void Function() whenRestartQuestionary;
